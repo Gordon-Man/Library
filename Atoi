@@ -1,0 +1,35 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int		ft_atoi(char *str)
+{
+		double sum;
+		int flag;
+
+		sum = 0;
+		flag = 1;
+		while ((*str >= 9 && *str <= 13) || *str == ' ' || *str == '0')
+			str++;
+		if (*str == '-')
+		{
+		    str++;
+		    flag = -1;
+		}
+		while (*str)
+		{
+			if (*str >= 48 && *str <= 57)
+				sum = (sum + (*str - 48)) * 10;
+			else
+				return (sum/10*flag);
+			str++;
+		}
+		return ((sum/10) * flag);
+}
+
+
+int main()
+{
+    int a = atoi("        \t\r\v\f\n2147483647\t");
+    int b = ft_atoi("        \t\r\v\f\n2147483647\t");
+    printf("%d\n%d", a, b);
+}
