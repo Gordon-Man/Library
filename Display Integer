@@ -3,8 +3,22 @@
 void    display_integer(int a)
 {
     char c;
+    int flag = 0;
+    if (a < 0)
+    {
+        if (a == -2147483648)
+            a += 1;
+        a *= -1;
+        write(1, "-", 1);
+        flag = 1;
+    }
     if (a > 0)
         display_integer(a / 10);
+        if (flag == 1)
+        {
+            write(1, "8", 1);
+            return;
+        }
     if (a == 0)
         return ;
     c = a % 10 + '0';
@@ -13,6 +27,6 @@ void    display_integer(int a)
 
 int main()
 {
-    int a = 2147483647;
+    int a = -2147483648;
     display_integer(a);
 }
