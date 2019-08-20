@@ -1,0 +1,18 @@
+#include <unistd.h>
+
+void    display_integer(int a)
+{
+    char c;
+    if (a > 0)
+        display_integer(a / 10);
+    if (a == 0)
+        return ;
+    c = a % 10 + '0';
+    write(1, &c, 1);
+}
+
+int main()
+{
+    int a = 2147483647;
+    display_integer(a);
+}
