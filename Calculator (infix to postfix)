@@ -174,32 +174,34 @@ int     calculate_postfix(char *str, Stack *stack)
     return (result = pop_int(stack));
 }
 
-void    display_integer(int a)
+void	ft_putchar(char c)
 {
-    char c;
-    int flag = 0;
-    if (a < 0)
-    {
-        if (a == -2147483648)
-            a += 1;
-        a *= -1;
-        write(1, "-", 1);
-        flag = 1;
-    }
-    if (a > 0)
-        display_integer(a / 10);
-    if (flag == 1)
-    {
-        
-        return write(1, "8", 1);;
-    }
-    if (a == 0)
-        return ;
-    c = a % 10 + '0';
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
 
+void	ft_putnbr(int nb)
+{
+	int flag;
 
+	if (nb == -2147483648)
+	{
+		nb /= 10;
+		flag = 1;
+	}
+	if (nb < 0)
+	{
+		putchar('-');
+		nb *= -1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+	}
+	nb %= 10;
+	putchar(nb + '0');
+	if (flag == 1)
+		putchar('8');
+}
 
 int    eval_expr(char *infix)
 {
@@ -219,10 +221,8 @@ int    eval_expr(char *infix)
 
     postfix_index = sort_string(stack, infix, postfix, infix_index, postfix_index);
     append_operators(stack, postfix, postfix_index);
-
     result = calculate_postfix(postfix, stack);
-    printf("%s", postfix);
-    printf("\n%d", result);
+    ft_putnbr(result);
     return result;
 }
 
