@@ -1,0 +1,23 @@
+char    *read_file(char *path)
+{
+    int file;
+    int size;
+    char *str;
+    char c;
+    
+    file = open(path, O_RDONLY);
+    if (file < 0)
+        return (0);
+    while (read(file, &c, 1))
+        size++;
+    close(file);
+    str = (char *)malloc(sizeof(char) * size);
+    file = open(path, O_RDONLY);
+    size = 0;
+    while (read(file, &c, 1))
+        str[size++] = c;
+    close(file);
+    if (!str)
+        return (NULL);
+    return (str);
+}
