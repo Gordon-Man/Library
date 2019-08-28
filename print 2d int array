@@ -1,0 +1,17 @@
+void    print_two_dimension_array(int** array, int x, int y)
+{
+    int i;
+    int j;
+    i = 0;
+    j = 0;
+    while (i++ < x)
+    {
+        while (j < y)
+        {
+            printf("%d", array[i][j]);
+            j++;
+        }
+        j = 0;
+        printf("\n");
+    }
+}
