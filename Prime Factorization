@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+void    prime_factorization(int n)
+{
+    int i;
+    
+    i = 1;
+    if (n == 1)
+        printf("1");
+    else if (n < 1)
+        printf("Please Enter Positive Integers Only.");
+    else
+    {
+        while (i++ < n)
+        {
+            if (n % i == 0)
+            {
+                printf("%d", i);
+                n /= i;
+                if (n != 1)
+                    printf(" * ");
+            }
+           
+        }
+    }
+    return ;
+}
+
+int      main()
+{
+    prime_factorization(0);
+    return 0;
+}
