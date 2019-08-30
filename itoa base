@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+char  *print_base(int number, int base, char *str)
+{
+    char c;
+    static int index = 0;
+    
+    if (number >= base)
+        print_base(number / base, base, str);
+    number %= base;
+    c = (number > 9) ? number + 'a' - 10 : number + '0';
+    str[index] = c; 
+    index++;
+}
+
+char    *itoa(int n, int base)
+{
+    char    *str;
+
+    str = malloc(sizeof(char) * 32);
+    print_base(n, base, str);
+    return (str);
+}
+
+int      main()
+{
+    char *str = itoa(0, 2);
+    printf("%s", str);
+    return 0;
+}
