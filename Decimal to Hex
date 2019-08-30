@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+void  print_hex(int number)
+{
+    char c;
+    
+    if (number >= 16)
+        print_hex(number / 16);
+    number %= 16;
+    c = (number > 9) ? number + 87 : number + '0';
+    printf("%c", c);
+}
+
+int main()
+{
+    print_hex(255);
+    return 0;
+}
